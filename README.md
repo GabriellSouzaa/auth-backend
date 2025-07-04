@@ -23,7 +23,7 @@ Backend em Node.js com autenticação via JWT, utilizando PostgreSQL e Prisma OR
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/auth-backend.git
+git clone https://github.com/GabriellSouzaa/auth-backend.git
 cd auth-backend
 
 # 2. Instale as dependências
