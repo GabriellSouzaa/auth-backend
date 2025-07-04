@@ -1,9 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+
+export const authMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const authHeader = req.headers.authorization;
-  if (!authHeader) return res.status(401).json({ message: 'Token não fornecido' });
+  if (!authHeader) {
+    res.status(401).json({ message: 'Token não fornecido' });
+    return; 
+  }
 
   const token = authHeader.split(' ')[1];
 
@@ -12,6 +16,8 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     (req as any).userId = (decoded as any).userId;
     next();
   } catch (err) {
-    return res.status(401).json({ message: 'Token inválido' });
+    res.status(401).json({ message: 'Token inválido' });
+  
   }
 };
+
